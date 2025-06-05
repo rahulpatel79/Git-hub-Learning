@@ -1,147 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login & Signup</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
-    }
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    margin: 0;
+    padding: 40px;
+    color: #333;
+  }
 
-    body {
-      height: 100vh;
-      background: linear-gradient(to right, #1e3c72, #2a5298);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  h1 {
+    color: #2a5298;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
 
-    .wrapper {
-      width: 100%;
-      max-width: 400px;
-      padding: 20px;
-    }
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
 
-    .form-container {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      animation: slideIn 0.5s ease;
-    }
+  h3 {
+    color: #1e3c72;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 
-    @keyframes slideIn {
-      from {
-        transform: translateY(-30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+  ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
 
-    h2 {
-      text-align: center;
-      color: #2a5298;
-      margin-bottom: 25px;
-    }
+  ul li {
+    margin: 6px 0;
+    font-size: 15px;
+  }
 
-    .input-box {
-      margin-bottom: 18px;
-    }
+  button {
+    padding: 10px 20px;
+    background-color: #2a5298;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background 0.3s;
+  }
 
-    .input-box input {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      outline: none;
-      transition: border 0.3s;
-    }
+  button:hover {
+    background-color: #1e3c72;
+  }
 
-    .input-box input:focus {
-      border-color: #2a5298;
-    }
+  a {
+    color: #1e3c72;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+  }
 
-    .btn {
-      width: 100%;
-      padding: 12px;
-      background-color: #2a5298;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #1e3c72;
-    }
-
-    .switch-text {
-      margin-top: 15px;
-      text-align: center;
-      color: #555;
-      font-size: 14px;
-    }
-
-    .switch-text span {
-      color: #2a5298;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-
-<div class="wrapper">
-  <div class="form-container">
-    <h2 id="formTitle">Login</h2>
-    <form id="form">
-      <div class="input-box" id="nameBox" style="display: none;">
-        <input type="text" placeholder="Full Name" />
-      </div>
-      <div class="input-box">
-        <input type="email" required placeholder="Email" />
-      </div>
-      <div class="input-box">
-        <input type="password" required placeholder="Password" />
-      </div>
-      <button type="submit" class="btn">Submit</button>
-    </form>
-    <p class="switch-text">
-      Don’t have an account? <span id="toggleBtn">Signup</span>
-    </p>
-  </div>
-</div>
-
-<script>
-  const toggleBtn = document.getElementById("toggleBtn");
-  const formTitle = document.getElementById("formTitle");
-  const nameBox = document.getElementById("nameBox");
-
-  let isLogin = true;
-
-  toggleBtn.addEventListener("click", function toggleMode() {
-    isLogin = !isLogin;
-    formTitle.textContent = isLogin ? "Login" : "Signup";
-    nameBox.style.display = isLogin ? "none" : "block";
-    document.querySelector(".switch-text").innerHTML = isLogin
-      ? `Don’t have an account? <span id="toggleBtn">Signup</span>`
-      : `Already have an account? <span id="toggleBtn">Login</span>`;
-    
-    // Re-attach event listener after HTML change
-    document.getElementById("toggleBtn").addEventListener("click", toggleMode);
-  });
-</script>
-
-</body>
-</html>
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
