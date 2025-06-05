@@ -1,29 +1,147 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Git Hub Task</title>
-  </head>
-  <body>
-    <h1>Hello github</h1>
-    <h1>Hello github</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut cupiditate,
-      quas ad veritatis quasi officia nemo iste facere minus maxime dignissimos
-      veniam, sit officiis exercitationem aliquid quae eius. Pariatur, deserunt!
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Signup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    h2 {
+      text-align: center;
+      color: #2a5298;
+      margin-bottom: 25px;
+    }
+
+    .input-box {
+      margin-bottom: 18px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    .input-box input:focus {
+      border-color: #2a5298;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #2a5298;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #1e3c72;
+    }
+
+    .switch-text {
+      margin-top: 15px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .switch-text span {
+      color: #2a5298;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="form-container">
+    <h2 id="formTitle">Login</h2>
+    <form id="form">
+      <div class="input-box" id="nameBox" style="display: none;">
+        <input type="text" placeholder="Full Name" />
+      </div>
+      <div class="input-box">
+        <input type="email" required placeholder="Email" />
+      </div>
+      <div class="input-box">
+        <input type="password" required placeholder="Password" />
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <p class="switch-text">
+      Don’t have an account? <span id="toggleBtn">Signup</span>
     </p>
-    <h3>technologies list</h3>
-    <ul>
-      <li>java</li>
-      <li>javascript</li>
-      <li>python</li>
-      <li>c++</li>
-      <li>html</li>
-      <li>css</li>
-      <li>bootstrap</li>
-      <li>react</li>
-    </ul>
-  </body>
+  </div>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById("toggleBtn");
+  const formTitle = document.getElementById("formTitle");
+  const nameBox = document.getElementById("nameBox");
+
+  let isLogin = true;
+
+  toggleBtn.addEventListener("click", function toggleMode() {
+    isLogin = !isLogin;
+    formTitle.textContent = isLogin ? "Login" : "Signup";
+    nameBox.style.display = isLogin ? "none" : "block";
+    document.querySelector(".switch-text").innerHTML = isLogin
+      ? `Don’t have an account? <span id="toggleBtn">Signup</span>`
+      : `Already have an account? <span id="toggleBtn">Login</span>`;
+    
+    // Re-attach event listener after HTML change
+    document.getElementById("toggleBtn").addEventListener("click", toggleMode);
+  });
+</script>
+
+</body>
 </html>
